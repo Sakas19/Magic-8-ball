@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 export default function App() {
@@ -35,11 +35,23 @@ export default function App() {
 
   const handleButtonClick = () => {
     if (question) {
-      const randomIndex = Math.floor(Math.random() * answers.length);
-      setResult(answers[randomIndex]);
-      setShowAnswer(true);
+      setResult('');
+      setShowAnswer(false);
+
+      setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * answers.length);
+        setResult(answers[randomIndex]);
+        setShowAnswer(true);
+      }, 1000);
     }
   };
+
+  useEffect(() => {
+    if (showAnswer) {
+      const answerContainer = document.getElementById('answer-container');
+      answerContainer.classList.add('reveal-answer');
+    }
+  }, [showAnswer]);
 
   return (
     <div className="background">
@@ -54,12 +66,20 @@ export default function App() {
         />
         <button onClick={handleButtonClick}>Shake</button>
         {showAnswer && question && (
-          <p id="result">Magic 8 Ball says: {result}</p>
+          <div id="answer-container">
+            <p id="result">Magic 8 Ball says: {result}</p>
+          </div>
         )}
       </div>
+          <div className="credit">
+      <p>
+        Design inspired by <a href="https://dribbble.com/shots/15715973-Magical-Ball-of-Excuses">Michael Crawford</a>
+      </p>
+    </div>
     </div>
   );
 }
+
 
 
 

@@ -4,7 +4,20 @@
   padding: 2rem;
   text-align: center;
 }
+@font-face {
+  font-family: 'YoungSerif';
+  src: url('./fonts/youngserif-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
+body {
+  font-family: 'YoungSerif', serif;
+}
+
+h1 {
+  font-family: 'YoungSerif', serif;
+}
 .title {
   position: absolute;
   left: 50%;
@@ -62,18 +75,40 @@
   color: white;
 }
 
-@font-face {
-  font-family: 'YoungSerif';
-  src: url('./fonts/youngserif-regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+.reveal-answer {
+  animation: reveal 1s;
 }
 
-body {
-  font-family: 'YoungSerif', serif;
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-h1 {
-  font-family: 'YoungSerif', serif;
+.credit {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #aaa;
+  font-size: 12px;
+  opacity: 0.7;
 }
+
+.credit a {
+  color: #FAFAE7;
+  text-decoration: none;
+}
+
+.credit a:hover {
+  color: #e8e8e8;
+}
+
+
 
